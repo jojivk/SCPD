@@ -1,0 +1,126 @@
+2c -- Test output of train_forward (hidden) (0.0/4.0)
+Batch Size: 5
+Character Embedding Size: 20
+Hidden Size: 128
+Character-level target vocab with size: 30
+Input to train_forward is:
+	 Sequence of Length: 21
+	 Sequence: tensor([[ 1,  1,  1,  1,  1],
+        [19,  6, 19, 11, 23],
+        [23,  4,  6, 11,  9],
+        [ 7,  2, 19, 11,  9],
+        [19,  0, 22, 17,  7],
+        [17,  0,  4, 26, 12],
+        [16,  0, 26, 22,  4],
+        [ 4,  0,  6,  7,  4],
+        [17,  0, 11,  2, 26],
+        [ 7,  0,  9,  0, 12],
+        [11,  0,  7,  0,  9],
+        [19,  0,  7,  0,  6],
+        [23,  0,  4,  0,  2],
+        [23,  0, 12,  0,  0],
+        [26,  0, 17,  0,  0],
+        [17,  0, 11,  0,  0],
+        [17,  0,  6,  0,  0],
+        [22,  0,  9,  0,  0],
+        [ 2,  0,  2,  0,  0],
+        [ 0,  0,  0,  0,  0],
+        [ 0,  0,  0,  0,  0]])
+----------------------------------------
+Initializing solution's CharDecoder...
+Initializing student's CharDecoder...
+Copying model solution's target_vocab, charDecoder, char_output_projection and decoderCharEmb to student's CharDecoder
+Using model solution's forward() function in student's CharDecoder
+Running solution's train_forward()...
+Running student's train_forward()...
+Solution loss value: 200.39015197753906
+Student loss value: 3.3602216243743896
+Test Failed: 3.3602216243743896 != 200.39015197753906 within 3 places
+2c -- Test shape of output of train_forward (public) (1.0/1.0)
+Batch Size: 5
+Character Embedding Size: 3
+Hidden Size: 3
+Character-level target vocab with size: 30
+Input to train_forward is:
+	 Sequence of Length: 4
+	 Sequence: tensor([[0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]])
+----------------------------------------
+Initializing student's CharDecoder...
+Running student's train_forward()...
+Expected loss with shape: 0
+Student's loss has shape: 0
+2d -- Test output of decode_greedy for exact match (hidden) (0.0/3.0)
+Setting batch size to 5
+Initializing student's CharDecoder with hidden_size=3, char_embedding_size=3, target_vocab from sanity_check_en_es_data/char_vocab_sanity_check.json
+Initializing student's CharDecoder...
+Initializing solution's CharDecoder...
+Copying model solution's target_vocab, charDecoder, char_output_projection and decoderCharEmb to student's CharDecoder
+Using model solution's forward() and train_forward() functions in student's CharDecoder
+Passing decode_greedy these initialStates:
+(tensor([[[ 37.0292,  25.6323, -31.6395],
+         [-40.0942, -34.1682, -49.3439],
+         [-38.5819, -12.3649,  33.7439],
+         [  8.3691, -38.0303, -40.1112],
+         [ 24.8738, -37.1921,  -6.1564]]]), tensor([[[ 23.9853, -23.1406,  -5.4520],
+         [ -4.3522, -11.8292, -25.3516],
+         [-44.5719, -40.4179, -26.7731],
+         [ 48.2919, -24.1507, -33.5764],
+         [ 12.1197,  13.7805,  27.3955]]]))
+Running solution's decode_greedy function...
+Running student's decode_greedy function...
+Solution decode_greedy output: ['uudddzzzzzzzzzzzzzzzz', 'dddddddzzzzzzzzzzzzzz', 'dddddddzzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzzzzz', 'zzzzzzzzzzzzzzzzzzzzz']
+Student decode_greedy  output: ['uddddzzzzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzzzzz', 'dddddzzzzzzzzzzzzzzzz', 'zzzzzzzzzzzzzzzzzzzzz']
+Test Failed: False is not true : Failure: decode_greedy output not exactly the same as solution's (some strings do not match)
+2d -- Test output of decode_greedy for partial match (hidden) (0.0/3.5)
+Setting batch size to 5
+Initializing student's CharDecoder with hidden_size=3, char_embedding_size=3, target_vocab from sanity_check_en_es_data/char_vocab_sanity_check.json
+Initializing student's CharDecoder...
+Initializing solution's CharDecoder...
+Copying model solution's target_vocab, charDecoder, char_output_projection and decoderCharEmb to student's CharDecoder
+Using model solution's forward() and train_forward() functions in student's CharDecoder
+Passing decode_greedy these initialStates:
+(tensor([[[ 37.0292,  25.6323, -31.6395],
+         [-40.0942, -34.1682, -49.3439],
+         [-38.5819, -12.3649,  33.7439],
+         [  8.3691, -38.0303, -40.1112],
+         [ 24.8738, -37.1921,  -6.1564]]]), tensor([[[ 23.9853, -23.1406,  -5.4520],
+         [ -4.3522, -11.8292, -25.3516],
+         [-44.5719, -40.4179, -26.7731],
+         [ 48.2919, -24.1507, -33.5764],
+         [ 12.1197,  13.7805,  27.3955]]]))
+Running solution's decode_greedy function...
+Running student's decode_greedy function...
+Solution decode_greedy output: ['uudddzzzzzzzzzzzzzzzz', 'dddddddzzzzzzzzzzzzzz', 'dddddddzzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzzzzz', 'zzzzzzzzzzzzzzzzzzzzz']
+Student decode_greedy output: ['uddddzzzzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzzzzz', 'dddddzzzzzzzzzzzzzzzz', 'zzzzzzzzzzzzzzzzzzzzz']
+Just looking at first 18 characters...
+First 18 chars of solution decode_greedy output: ['uudddzzzzzzzzzzzzz', 'dddddddzzzzzzzzzzz', 'dddddddzzzzzzzzzzz', 'ddddddzzzzzzzzzzzz', 'zzzzzzzzzzzzzzzzzz']
+First 18 chars of student's decode_greedy output: ['uddddzzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzz', 'ddddddzzzzzzzzzzzz', 'dddddzzzzzzzzzzzzz', 'zzzzzzzzzzzzzzzzzz']
+Test Failed: False is not true : Failure: incorrect decode_greedy partial output (first 18 characters of each string in decodedWords do not match solution)
+2d -- Test shape of output of decode_greedy (public) (0.5/0.5)
+Setting batch size to 5
+Initializing student's CharDecoder with hidden_size=3, char_embedding_size=3, target_vocab from sanity_check_en_es_data/char_vocab_sanity_check.json
+Initializing student's CharDecoder...
+Passing decode_greedy this initialStates:
+(tensor([[[0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.]]]), tensor([[[0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.]]]))
+Running student's decode_greedy function...
+Student's output from decode_greedy:  ['soooooooooooooooooooo', 'soooooooooooooooooooo', 'soooooooooooooooooooo', 'soooooooooooooooooooo', 'soooooooooooooooooooo']
+Expect decode_greedy output to be a list length 5
+Student's decode_greedy output is a list length 5
+Passed!
+2e -- BLEU score on tiny test set is over 99 (public) (0.0/3.0)
+Test Failed: The number of hypotheses and their reference(s) should be the same
+2f -- BLEU score above 16 (public) (0.0/4.0)
+Test Failed: [Errno 2] No such file or directory: './student/outputs/test_outputs.txt'
+2f -- BLEU score above 10 (public) (0.0/2.0)
+Test Failed: [Errno 2] No such
